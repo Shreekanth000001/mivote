@@ -3,6 +3,9 @@ import { CheckCircle } from 'lucide-react';
 // In a real app with routing, you would use this hook.
 // import { useLocation } from 'react-router-dom';
 
+// --- CONSTANTS ---
+const backendUrl = 'http://localhost:3000';
+
 // --- HELPER COMPONENTS ---
 
 // A reusable card for displaying a single candidate
@@ -17,7 +20,7 @@ const CandidateCard = ({ candidate, onSelect, isSelected }) => {
         >
             <div className="flex flex-col items-center p-6">
                 <img
-                    src={candidate.img}
+                    src={`${backendUrl}${candidate.img}`}
                     alt={candidate.name}
                     className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md"
                     onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x300/CCCCCC/FFFFFF?text=Image'; }}
@@ -115,7 +118,7 @@ export default function App() {
     useEffect(() => {
         const fetchCandidates = async () => {
             try {
-                const response = await fetch('http://localhost:3000/candidate/show');
+                const response = await fetch(`${backendUrl}/candidate/show`);
                 if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
                 const data = await response.json();
                 setCandidates(data.candidates || []);
@@ -167,7 +170,7 @@ export default function App() {
 
         try {
             // This endpoint might need to be different, e.g., '/votes/submit-ballot'
-            const response = await fetch('http://localhost:3000/votes', {
+            const response = await fetch(`${backendUrl}/votes`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),

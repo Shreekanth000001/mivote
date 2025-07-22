@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 const category = ({ voterid }) => {
+    const backendUrl = 'http://localhost:3000';
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
@@ -23,7 +24,7 @@ const category = ({ voterid }) => {
 
                             <div className="md:w-[205px] md:h-[250px] bg-white border border-gray-200 rounded-2xl shadow flex flex-col">
 
-                                <img className="rounded-t-2xl md:w-[205px]" src={`${cat.img}`} alt="unable to fetch course img" />
+                                <img className="rounded-t-2xl md:w-[205px] h-[150px] object-cover" src={`${backendUrl}${cat.img}`} alt={`${cat.categorytype} category`} />
 
                                 <div className='mt-auto m-3'>
                                     <div className="inline-flex mt-auto items-center px-4 py-2 text-sm font-medium text-center text-text-purple bg-light-purple rounded-3xl">
