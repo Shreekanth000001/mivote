@@ -3,6 +3,9 @@ import { CheckCircle } from 'lucide-react';
 // In a real app with routing, you would use this hook.
 // import { useLocation } from 'react-router-dom';
 
+// Import the sound file from your assets folder
+import VotedSound from '../assets/voted.mp3';
+
 // --- CONSTANTS ---
 const backendUrl = 'http://localhost:3000';
 
@@ -159,8 +162,6 @@ export default function App() {
         setIsSubmitting(true);
         setError('');
 
-        // Construct the payload for the backend.
-        // This assumes your backend can handle a single submission with all votes.
         const payload = {
             voterid,
             president: selections.President,
@@ -169,7 +170,6 @@ export default function App() {
         };
 
         try {
-            // This endpoint might need to be different, e.g., '/votes/submit-ballot'
             const response = await fetch(`${backendUrl}/votes`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -178,9 +178,12 @@ export default function App() {
 
             if (!response.ok) throw new Error('Vote submission failed.');
             
+            // Play the sound on successful submission
+            const audio = new Audio(VotedSound);
+            audio.play();
+
             setShowModal(false);
             setShowThankYou(true);
-            // Optionally, disable the entire page after a successful vote.
 
         } catch (err) {
             console.error('Error submitting vote:', err);

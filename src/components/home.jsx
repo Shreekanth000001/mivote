@@ -4,6 +4,7 @@ import "../index.css";
 import Category from "./category";
 import Candidates from "./candidates";
 import Voters from "./voters";
+import VoteChart from "./VoteChart";
 
 
 const Home = () => {
@@ -16,6 +17,9 @@ const Home = () => {
     }
     else if (location.pathname.startsWith('/candidates')) {
       return <Candidates/>;
+    }
+    else if (location.pathname.startsWith('/graph')) {
+      return <VoteChart/>;
     }
     return null;
   };
