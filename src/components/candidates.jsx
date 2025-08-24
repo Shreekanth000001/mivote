@@ -23,7 +23,7 @@ const CandidateCard = ({ candidate, onSelect, isSelected }) => {
         >
             <div className="flex flex-col items-center p-6">
                 <img
-                    src={`${backendUrl}${candidate.img}`}
+                    src={`${candidate.img}`}
                     alt={candidate.name}
                     className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md"
                     onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x300/CCCCCC/FFFFFF?text=Image'; }}
