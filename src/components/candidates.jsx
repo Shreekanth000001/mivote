@@ -7,7 +7,7 @@ import { CheckCircle } from 'lucide-react';
 import VotedSound from '../assets/voted.mp3';
 
 // --- CONSTANTS ---
-const backendUrl = 'http://localhost:3000';
+const backendUrl = 'https://mivote-backend.onrender.com';
 
 // --- HELPER COMPONENTS ---
 

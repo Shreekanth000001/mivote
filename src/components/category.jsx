@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 const category = ({ voterid }) => {
-    const backendUrl = 'http://localhost:3000';
+    const backendUrl = 'https://mivote-backend.onrender.com';
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/category/show`)
+        fetch(`https://mivote-backend.onrender.com/category/show`)
             .then(response => response.json())
             .then(data => setCategory(data))
             .catch(error => console.error('Error fetching category:', error));
